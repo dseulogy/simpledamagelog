@@ -1,0 +1,361 @@
+<Ui xmlns="http://www.runewaker.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.runewaker.com/ UI.xsd">
+    <Frame name="SDL_Config" inherits="UICommonFrameTemplate" hidden="true" parent="UIParent">
+        <Size>
+            <AbsDimension x="825" y="653"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER"/>
+        </Anchors>
+        <Layers>
+            <Layer>
+                <FontString name="$parent_Title" inherits="Font_FrameTitle" text="SDL_Config">
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="7"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad>
+                UIPanelBackdropFrame_SetTexture(this, "Interface/Common/PanelCommonFrame", 256, 256)
+            </OnLoad>
+            <OnShow>
+                _G[this:GetName().."_Title"]:SetText(SDL.Config.GetLabel("SDL_Config_Title"))
+            </OnShow>
+        </Scripts>
+        <Frames>
+            <Frame name="$parent_ConfigProfile" inherits="SDLTmpl_Category">
+                <Size>
+                    <AbsDimension x="810" y="90"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="7.5" y="37.5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <Frame name="$parent__Profile" inherits="SDLTmpl_Dropdown">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOP">
+                                <Offset>
+                                    <AbsDimension x="-14" y="25"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Frame>
+                    <Button name="$parent_DeleteProfile" inherits="SDLTmpl_Button">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="25"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Button>
+                    <EditBox name="$parent_AddProfile" inherits="SDLTmpl_EditBox">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOP">
+                                <Offset>
+                                    <AbsDimension x="-14" y="50"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </EditBox>
+                </Frames>
+            </Frame>
+            <Frame name="$parent_General" inherits="SDLTmpl_Category">
+                <Size>
+                    <AbsDimension x="810" y="115"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_ConfigProfile">
+                        <Offset>
+                            <AbsDimension x="" y="12.5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <CheckButton name="$parent_Enabled" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOP">
+                                <Offset>
+                                    <AbsDimension x="-14" y="25"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_Locked" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="25"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_Backdrop" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOP">
+                                <Offset>
+                                    <AbsDimension x="-14" y="50"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <Button name="$parent_BackColor" inherits="SDLTmpl_ColorSelect">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="50"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Button>
+                    <EditBox name="$parent_NumLines" inherits="SDLTmpl_EditBox">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOP">
+                                <Offset>
+                                    <AbsDimension x="-14" y="75"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </EditBox>
+                </Frames>
+            </Frame>
+            <Frame name="$parent_Filter" inherits="SDLTmpl_Category">
+                <Size>
+                    <AbsDimension x="810" y="65"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_General">
+                        <Offset>
+                            <AbsDimension x="" y="12.5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <CheckButton name="$parent_FilterActive" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOP">
+                                <Offset>
+                                    <AbsDimension x="-14" y="25"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:Disable()
+                            </OnLoad>
+                        </Scripts>
+                    </CheckButton>
+                    <Button name="$parent_OpenFilterList" inherits="SDLTmpl_Button">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="25"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                this:Disable()
+                            </OnLoad>
+                        </Scripts>
+                    </Button>
+                </Frames>
+            </Frame>
+            <Frame name="$parent_Pet" inherits="SDLTmpl_Category">
+                <Size>
+                    <AbsDimension x="810" y="90"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_Filter">
+                        <Offset>
+                            <AbsDimension x="" y="12.5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <CheckButton name="$parent_PetInDamage" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOP">
+                                <Offset>
+                                    <AbsDimension x="-14" y="25"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_PetOutDamage" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="25"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_PetInHeal" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOP">
+                                <Offset>
+                                    <AbsDimension x="-14" y="50"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_PetOutHeal" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="50"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                </Frames>
+            </Frame>
+            <Frame name="$parent_In" inherits="SDLTmpl_Category">
+                <Size>
+                    <AbsDimension x="405" y="190"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Pet">
+                        <Offset>
+                            <AbsDimension y="12.5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <CheckButton name="$parent_InVisible" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="25"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_InLeft" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="50"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_InDamage" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="75"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_InHeal" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="100"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_DamageSource" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="125"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_HealSource" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="150"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                </Frames>
+            </Frame>
+            <Frame name="$parent_Out" inherits="SDLTmpl_Category">
+                <Size>
+                    <AbsDimension x="405" y="190"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parent_Pet">
+                        <Offset>
+                            <AbsDimension y="12.5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <CheckButton name="$parent_OutVisible" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="25"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_OutLeft" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="50"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_OutDamage" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="75"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_OutHeal" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="100"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_DamageTarget" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="125"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                    <CheckButton name="$parent_HealTarget" inherits="SDLTmpl_CheckButton">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-14" y="150"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                </Frames>
+            </Frame>
+        </Frames>
+    </Frame>
+</Ui>

@@ -1,0 +1,392 @@
+<Ui xmlns="http://www.runewaker.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.runewaker.com/ UI.xsd">
+    <!-- Log Frame -->
+    <Button name="SDLTmpl_LogHeaderButton_Left" enableMouse="true" text="LogHeader Left" virtual="true">
+        <Scripts>
+            <OnShow>
+                UIPanelAnchorFrame_OnShow(this:GetParent());
+            </OnShow>
+            <OnMouseDown>
+                UIPanelAnchorFrame_OnMouseDown(this:GetParent(), key);
+            </OnMouseDown>
+            <OnMouseUp>
+                UIPanelAnchorFrame_OnMouseUp(this:GetParent(), key);
+            </OnMouseUp>
+            <OnEnter>
+                GameTooltip:SetOwner(this, "", 4, 0);
+                GameTooltip:SetText(UI_MINIMAPBUTTON_MOVE, 0, 0.75, 0.95);
+                GameTooltip:Show();
+            </OnEnter>
+            <OnLeave>
+                GameTooltip:Hide();
+            </OnLeave>
+        </Scripts>
+        <NormalText inherits="GameFontHighlight" justifyH="LEFT">
+            <FontHeight>
+                <AbsValue val="14"/>
+            </FontHeight>
+            <Anchors>
+                <Anchor point="LEFT"/>
+            </Anchors>
+        </NormalText>
+    </Button>
+    <Button name="SDLTmpl_LogHeaderButton_Right" enableMouse="true" text="LogHeader Right" virtual="true">
+        <Scripts>
+            <OnShow>
+                UIPanelAnchorFrame_OnShow(this:GetParent());
+            </OnShow>
+            <OnMouseDown>
+                UIPanelAnchorFrame_OnMouseDown(this:GetParent(), key);
+            </OnMouseDown>
+            <OnMouseUp>
+                UIPanelAnchorFrame_OnMouseUp(this:GetParent(), key);
+            </OnMouseUp>
+            <OnEnter>
+                GameTooltip:SetOwner(this, "", 4, 0);
+                GameTooltip:SetText(UI_MINIMAPBUTTON_MOVE, 0, 0.75, 0.95);
+                GameTooltip:Show();
+            </OnEnter>
+            <OnLeave>
+                GameTooltip:Hide();
+            </OnLeave>
+        </Scripts>
+        <NormalText inherits="GameFontHighlight" justifyH="RIGHT">
+            <FontHeight>
+                <AbsValue val="14"/>
+            </FontHeight>
+            <Anchors>
+                <Anchor point="RIGHT"/>
+            </Anchors>
+        </NormalText>
+    </Button>
+    <MessageFrame name="SDLTmpl_LogMessageFrame_Left" displayDuration="5.0" fadeDuration="2.5" maxLines="50" virtual="true">
+        <FontString inherits="GameFontHighlight" justifyH="LEFT" outline="THICK">
+            <FontHeight>
+                <AbsValue val="12"/>
+            </FontHeight>
+        </FontString>
+    </MessageFrame>
+    <MessageFrame name="SDLTmpl_LogMessageFrame_Right" displayDuration="5.0" fadeDuration="2.5" maxLines="50" virtual="true">
+        <FontString inherits="GameFontHighlight" justifyH="RIGHT" outline="THICK">
+            <FontHeight>
+                <AbsValue val="12"/>
+            </FontHeight>
+        </FontString>
+    </MessageFrame>
+
+    <Frame name="SDLTmpl_LogFrame" frameStrata="BACKGROUND" virtual="true">
+        <Size>
+            <AbsDimension x="300" y="165"/>
+        </Size>
+        <Layers>
+            <Layer>
+                <Texture name="$parent_Texture" file="Interface\Login\Common\ColorButton-Background" hidden="true">
+                    <Anchors>
+                        <Anchor point="TOPLEFT"/>
+                        <Anchor point="BOTTOMRIGHT"/>
+                    </Anchors>
+                </Texture>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Frame name="$parent_Backdrop">
+                <!--<Backdrop edgeFile="Interface\Tooltips\Tooltip-Border" bgFile="Interface\Tooltips\Tooltip-Background">
+                    <BackgroundInsets>
+                        <AbsInset top="4" left="4" bottom="4" right="4"/>
+                    </BackgroundInsets>
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                </Backdrop>-->
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="-4" y="-4"/>
+                        </Offset>
+                    </Anchor>
+                    <Anchor point="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="4" y="4"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Frame>
+            <Button name="$parent_HeaderLeft" inherits="SDLTmpl_LogHeaderButton_Left" hidden="true">
+                <Size>
+                    <AbsDimension x="300" y="15"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT"/>
+                </Anchors>
+            </Button>
+            <MessageFrame name="$parent_LogLeft" inherits="SDLTmpl_LogMessageFrame_Left" hidden="true">
+                <Anchors>
+                    <Anchor point="TOPLEFT"/>
+                    <Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent_HeaderLeft"/>
+                </Anchors>
+            </MessageFrame>
+            <Button name="$parent_HeaderRight" inherits="SDLTmpl_LogHeaderButton_Right" hidden="true">
+                <Size>
+                    <AbsDimension x="300" y="15"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT"/>
+                </Anchors>
+            </Button>
+            <MessageFrame name="$parent_LogRight" inherits="SDLTmpl_LogMessageFrame_Right" hidden="true">
+                <Anchors>
+                    <Anchor point="TOPLEFT"/>
+                    <Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent_HeaderRight"/>
+                </Anchors>
+            </MessageFrame>
+        </Frames>
+    </Frame>
+
+    <!-- Config Frame -->
+    <Frame name="SDLTmpl_Category" virtual="true">
+        <Size>
+            <AbsDimension x="400" y="75"/>
+        </Size>
+        <Scripts>
+            <OnShow>
+                _G[this:GetName().."_Header_Label"]:SetText(SDL.Config.GetLabel(this:GetName()))
+            </OnShow>
+        </Scripts>
+        <Backdrop edgeFile="Interface\Tooltips\Tooltip-Border" bgFile="Interface\Tooltips\Tooltip-Background">
+            <BackgroundInsets>
+                <AbsInset top="4" left="4" bottom="4" right="4"/>
+            </BackgroundInsets>
+            <EdgeSize>
+                <AbsValue val="16"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="16"/>
+            </TileSize>
+        </Backdrop>
+        <Frames>
+            <Frame name="$parent_Header">
+                <Size>
+                    <AbsDimension y="26"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="15" y="-8"/>
+                        </Offset>
+                    </Anchor>
+                    <Anchor point="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="-45" y="-8"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Backdrop edgeFile="Interface\Tooltips\Tooltip-Border" bgFile="Interface\Tooltips\Tooltip-Background">
+                    <BackgroundInsets>
+                        <AbsInset top="4" left="4" bottom="4" right="4"/>
+                    </BackgroundInsets>
+                    <EdgeSize>
+                        <AbsValue val="14"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="14"/>
+                    </TileSize>
+                </Backdrop>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parent_Label" inherits="GameTitleFont" justifyH="LEFT" text="HeaderTitle">
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="6" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                                <Anchor point="RIGHT">
+                                    <Offset>
+                                        <AbsDimension x="-6" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                            <FontHeight>
+                                <AbsValue val="14"/>
+                            </FontHeight>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+        </Frames>
+    </Frame>
+    <Button name="SDLTmpl_Button" inherits="UIPanelButtonTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="185" y="25"/>
+        </Size>
+        <Scripts>
+            <OnShow>
+                this:SetText(SDL.Config.GetLabel(this:GetName()))
+            </OnShow>
+            <OnClick>
+                SDL.Config.ClickButton(this:GetName())
+            </OnClick>
+        </Scripts>
+    </Button>
+    <CheckButton name="SDLTmpl_CheckButton" inherits="UIPanelCheckButtonTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="25" y="25"/>
+        </Size>
+        <Scripts>
+            <OnShow>
+                _G[this:GetName().."_Label"]:SetText(SDL.Config.GetLabel(this:GetName()))
+                this:SetChecked(SDL.Config.GetValue(this:GetName()))
+            </OnShow>
+            <OnClick>
+                SDL.Config.SetValue(this:GetName(), this:IsChecked())
+            </OnClick>
+        </Scripts>
+        <Layers>
+            <Layer>
+                <FontString name="$parent_Label" inherits="GameTitleFont" justifyH="LEFT">
+                    <Size>
+                        <AbsDimension x="350" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="RIGHT" relativeTo="$parent" relativePoint="LEFT"/>
+                    </Anchors>
+                    <FontHeight>
+                        <AbsValue val="14"/>
+                    </FontHeight>
+                </FontString>
+            </Layer>
+        </Layers>
+    </CheckButton>
+    <EditBox name="SDLTmpl_EditBox" autoFocus="false" virtual="true">
+        <Size>
+            <AbsDimension x="100" y="25"/>
+        </Size>
+        <Scripts>
+            <OnShow>
+                _G[this:GetName().."_Label"]:SetText(SDL.Config.GetLabel(this:GetName()))
+                this:SetText(SDL.Config.GetValue(this:GetName()))
+            </OnShow>
+            <OnEnterPressed>
+                SDL.Config.SetValue(this:GetName(), this:GetText())
+            </OnEnterPressed>
+            <OnEscapePressed>
+                this:ClearFocus()
+            </OnEscapePressed>
+        </Scripts>
+        <Backdrop bgFile="Interface\SocialFrame\SocialFrame_Contextborder_bg" edgeFile="Interface\Tooltips\Tooltip-border" tile="true">
+            <BackgroundInsets>
+                <AbsInset top="2" left="2" bottom="2" right="2"/>
+            </BackgroundInsets>
+            <EdgeSize>
+                <AbsValue val="10"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="10"/>
+            </TileSize>
+        </Backdrop>
+        <FontString name="$parent_Text" inherits="GameTooltipFont" justifyH="LEFT">
+            <FontHeight>
+                <AbsValue val="13" />
+            </FontHeight>
+        </FontString>
+        <TextInsets>
+            <AbsInset left="6" right="6" top="6" bottom="6" />
+        </TextInsets>
+        <Layers>
+            <Layer>
+                <FontString name="$parent_Label" inherits="GameTitleFont" justifyH="LEFT">
+                    <Size>
+                        <AbsDimension x="275" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="RIGHT" relativeTo="$parent" relativePoint="LEFT"/>
+                    </Anchors>
+                    <FontHeight>
+                        <AbsValue val="14"/>
+                    </FontHeight>
+                </FontString>
+            </Layer>
+        </Layers>
+    </EditBox>
+    <Frame name="SDLTmpl_Dropdown" inherits="UIDropDownMenuTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="145" y="25"/>
+        </Size>
+        <Scripts>
+            <OnLoad>
+                UIDropDownMenu_SetWidth(this, 145)
+            </OnLoad>
+            <OnShow>
+                _G[this:GetName().."_Label"]:SetText(SDL.Config.GetLabel(this:GetName()))
+                UIDropDownMenu_Initialize(this, function() SDL.Config.ClickDropdown(this:GetName()) end)
+                UIDropDownMenu_SetSelectedName(this, SDL.Config.GetValue(this:GetName()))
+            </OnShow>
+        </Scripts>
+        <Layers>
+            <Layer>
+                <FontString name="$parent_Label" inherits="GameTitleFont" justifyH="LEFT">
+                    <Size>
+                        <AbsDimension x="205" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="RIGHT" relativeTo="$parent" relativePoint="LEFT"/>
+                    </Anchors>
+                    <FontHeight>
+                        <AbsValue val="14"/>
+                    </FontHeight>
+                </FontString>
+            </Layer>
+        </Layers>
+    </Frame>
+    <Button name="SDLTmpl_ColorSelect" enableMouse="true" virtual="true">
+        <Size>
+            <AbsDimension x="25" y="25"/>
+        </Size>
+        <Layers>
+            <Layer>
+                <FontString name="$parent_Label" inherits="GameTitleFont" justifyH="LEFT">
+                    <Size>
+                        <AbsDimension x="350" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="RIGHT" relativeTo="$parent" relativePoint="LEFT"/>
+                    </Anchors>
+                    <FontHeight>
+                        <AbsValue val="14"/>
+                    </FontHeight>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnShow>
+                local frameName = this:GetName()
+                _G[this:GetName().."_Label"]:SetText(SDL.Config.GetLabel(frameName))
+                local cr, cg, cb, ca = ZZLibrary.Colors.HEXToRGBA(SDL.Config.GetValue(frameName))
+                _G[frameName.."_Texture"]:SetColor(cr, cg, cb)
+                _G[frameName.."_Texture"]:SetAlpha(ca)
+            </OnShow>
+            <OnClick>
+                SDL.Config.ClickColorPicker(this:GetName())
+            </OnClick>
+        </Scripts>
+        <NormalTexture name="$parent_Texture" file="Interface\Login\Common\ColorButton-Background">
+            <Size>
+                <AbsDimension x="22" y="22"/>
+            </Size>
+            <Anchors>
+                <Anchor point="CENTER"/>
+            </Anchors>
+        </NormalTexture>
+        <HighlightTexture file="Interface\Login\Common\ColorButton-Highlight" alphaMode="ADD">
+            <Size>
+                <AbsDimension x="25" y="25"/>
+            </Size>
+            <Anchors>
+                <Anchor point="CENTER"/>
+            </Anchors>
+            <TexCoords left="0" right="0.625" top="0" bottom="0.625"/>
+        </HighlightTexture>
+    </Button>
+</Ui>

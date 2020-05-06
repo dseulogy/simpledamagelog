@@ -1,0 +1,37 @@
+<Ui xmlns="http://www.runewaker.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.runewaker.com/ UI.xsd">
+    <Frame name="SDL_Out" parent="UIParent" inherits="SDLTmpl_LogFrame">
+    </Frame>
+
+    <Frame name="SDL_In" parent="UIParent" inherits="SDLTmpl_LogFrame">
+    </Frame>
+
+    <Button name="SDL_MinimapButton" parent="UIParent" inherits="MinimapButtonTemplate" >
+        <Size>
+            <AbsDimension y="24" x="24"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER" relativeTo="MinimapViewFrame" relativePoint="CENTER">
+                <Offset>
+                    <RelDimension x="0" y="15"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Scripts>
+            <OnClick>
+                ToggleUIFrame(SDL_Config)
+            </OnClick>
+            <OnEnter>
+                GameTooltip:SetOwner(this, "", 4, 0);
+                GameTooltip:SetText("SimpleDamageLog", 1, 1, 1);
+                GameTooltip:AddLine(UI_MINIMAPBUTTON_MOVE, 0, 0.75, 0.95);
+                GameTooltip:Show();
+            </OnEnter>
+            <OnLeave>
+                GameTooltip:Hide();
+            </OnLeave>
+        </Scripts>
+        <NormalTexture file="Interface\Addons\SimpleDamageLog\graphics\mini_normal"/>
+        <PushedTexture file="Interface\Addons\SimpleDamageLog\graphics\mini_pushed"/>
+        <HighlightTexture file="Interface\Minimap\MinimapButton_Highlight" alphaMode="ADD"/>
+    </Button>
+</Ui>

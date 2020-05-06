@@ -1,0 +1,26 @@
+libraries\ZZLibrary.lua
+libraries\ZZLibrary.xml
+core.lua
+config.lua
+log.lua
+templates.xml
+core.xml
+config.xml
+
+
+## Title: SimpleDamageLog
+## Version: 2.0-b02
+## Notes: Shows incoming and outgoing damage and heals in small movable text areas.
+## Author: Aulid@Osha
+
+##SimpleDamageLog.lua
+##SimpleDamageLogConfig.lua
+
+##locales\$language.lua
+
+##SimpleDamageLog.xml
+##SimpleDamageLogConfig.xml
+-- X-Curse-Packaged-Version: 2.0-b02
+-- X-Curse-Project-Name: SimpleDamageLog
+-- X-Curse-Project-ID: simpledamagelog
+-- X-Curse-Repository-ID: rom/simpledamagelog/mainline
